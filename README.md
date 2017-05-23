@@ -20,7 +20,8 @@
 ## Architecture & Tools
 ### MVP
 ### Retrofit 2
-### RxJava 1.9
+### Gson Converter
+### RxJava
 ### Picasso
 
 

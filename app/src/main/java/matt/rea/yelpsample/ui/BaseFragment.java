@@ -1,9 +1,10 @@
 package matt.rea.yelpsample.ui;
 
-import android.app.ActionBar;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 
 import matt.rea.yelpsample.R;
 
@@ -43,12 +44,12 @@ public abstract class BaseFragment extends Fragment {
         mDialog.show();
     }
 
-    protected void setTitle(String title) {
-        ActionBar actionBar =  getActivity().getActionBar();
-        if (actionBar != null) {
-            actionBar.setTitle(""); // hack for truncating title
-            actionBar.setTitle(title);
+    protected void setTitle(Toolbar toolbar, String title) {
+        if (toolbar == null) {
+            return;
         }
+        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
+        toolbar.setTitle(title);
     }
 
     public void hideProgress() {

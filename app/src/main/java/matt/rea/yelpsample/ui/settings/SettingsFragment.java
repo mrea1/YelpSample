@@ -12,7 +12,6 @@ import matt.rea.yelpsample.App;
 import matt.rea.yelpsample.R;
 import matt.rea.yelpsample.databinding.FragmentSettingsBinding;
 import matt.rea.yelpsample.ui.BaseFragment;
-import matt.rea.yelpsample.ui.main.BusinessAdapter;
 import matt.rea.yelpsample.ui.search.SearchFragment;
 import matt.rea.yelpsample.util.KeyboardUtil;
 
@@ -23,9 +22,7 @@ import matt.rea.yelpsample.util.KeyboardUtil;
 public class SettingsFragment extends BaseFragment implements SettingsContract.View {
 
     SettingsContract.Presenter mPresenter;
-    private BusinessAdapter mAdapter;
     private static final String LOG_TAG = "SettingsFragment";
-    private static final int NUM_COLUMNS = 2;
     private Settings mSettings;
 
     FragmentSettingsBinding mBinding;
@@ -47,9 +44,9 @@ public class SettingsFragment extends BaseFragment implements SettingsContract.V
     public View onCreateView(LayoutInflater inflater,
             @Nullable ViewGroup container,
             @Nullable Bundle savedInstanceState) {
-        setTitle(getString(R.string.settings_title));
-
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_settings, container, false);
+        setTitle(mBinding.toolbar, getString(R.string.settings_title));
+
         mBinding.city.setText(App.get(getContext()).getStorage().getSettingCity());
         mBinding.city.setOnEditorActionListener((v, actionId, event) -> {
             if (actionId == EditorInfo.IME_ACTION_GO) {
