@@ -28,7 +28,7 @@
 
                 <SearchView
                     android:id="@+id/searchView"
-                    android:layout_width="wrap_content"
+                    android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:iconifiedByDefault="false"
                     android:queryHint="Search"
@@ -64,7 +64,6 @@
                 android:onClick="@{ v -> presenter.onDeleteClicked() }"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-
 
         </RelativeLayout>
 
