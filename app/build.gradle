@@ -1,0 +1,78 @@
+apply plugin: 'com.android.application'
+apply plugin: 'me.tatarka.retrolambda'
+
+android {
+    compileSdkVersion Integer.parseInt(COMPILE_SDK_VERSION)
+    buildToolsVersion BUILD_TOOLS_VERSION
+    defaultConfig {
+        minSdkVersion MIN_SDK_VERSION
+        targetSdkVersion TARGET_SDK_VERSION
+
+        versionCode Integer.parseInt(DEFAULT_VERSION_CODE)
+        versionName VERSION_NAME
+
+        applicationId "matt.rea.yelpsample"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+
+    //Debugging
+    compile STETHO
+    compile STETHOOKHTTP3
+
+    // Third party standalone libs
+    compile RXANDROID
+    compile RXJAVA
+
+    // Retrofit 2
+    compile "com.squareup.retrofit2:retrofit:$RETROFIT_VERSION"
+    compile "com.squareup.retrofit2:converter-gson:$RETROFIT_VERSION"
+    compile "com.squareup.retrofit2:adapter-rxjava:$RETROFIT_VERSION"
+
+    // OkHttp3
+    compile "com.squareup.okhttp3:okhttp:$OKHTTP_VERSION"
+    compile "com.squareup.okhttp3:logging-interceptor:$OKHTTP_VERSION"
+
+    // Google Support Libraries
+    compile "com.android.support:appcompat-v7:$SUPPORT_LIB_VERSION"
+    compile "com.android.support:design:$SUPPORT_LIB_VERSION"
+    compile "com.android.support:cardview-v7:$SUPPORT_LIB_VERSION"
+    compile "com.android.support:support-annotations:$SUPPORT_LIB_VERSION"
+
+    compile CONSTRAINT_LAYOUT_VERSION
+
+    // Dagger 2
+    compile "com.google.dagger:dagger:$DAGGER_VERSION"
+    annotationProcessor "com.google.dagger:dagger-compiler:$DAGGER_VERSION"
+
+    //picasso
+    compile PICASSO
+
+    //Google Maps
+    compile "com.google.android.gms:play-services-maps:$GOOGLE_MAPS_VERSION"
+
+    //Location Services
+    compile "com.google.android.gms:play-services-location:$GOOGLE_MAPS_VERSION"
+
+    //fragment navigation
+    compile 'com.ncapdevi:frag-nav:1.2.5'
+}
